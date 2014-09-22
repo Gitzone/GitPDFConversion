@@ -1,0 +1,15 @@
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\PDFsharpClock.dll
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\PDFsharpClock.pdb
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\PdfSharp.dll
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\PdfSharp.pdb
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\PdfSharp.xml
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\de\PdfSharp.resources.dll
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\obj\Debug\PDFsharpClock.csprojResolveAssemblyReference.cache
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\obj\Debug\PDFsharpClock.dll
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\obj\Debug\PDFsharpClock.pdb
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\Microsoft.Office.Interop.Excel.dll
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\Microsoft.Office.Interop.Word.dll
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\office.dll
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\Microsoft.Office.Interop.Excel.xml
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\Microsoft.Office.Interop.Word.xml
+D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\bin\office.xml
