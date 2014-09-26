@@ -38,11 +38,11 @@
 
                             <button type="submit" class="btn btn-primary start">
                                 <i class="glyphicon glyphicon-upload"></i>
-                                <span>Start upload</span>
+                                <span>Start Conversion</span>
                             </button>
                             <button type="reset" class="btn btn-warning cancel">
                                 <i class="glyphicon glyphicon-ban-circle"></i>
-                                <span>Cancel upload</span>
+                                <span>Cancel</span>
                             </button>
                             <%-- <button type="button" class="btn btn-danger delete">
                     <i class="glyphicon glyphicon-trash"></i>
@@ -193,7 +193,7 @@
 <script src="FileUpload/js/cors/jquery.xdr-transport.js"></script>
 <![endif]-->
         </div>
-        <asp:Button ID="btnConvert" Text="Convert" runat="server" OnClick="btnConvert_Click" />
+      <%--  <asp:Button ID="btnConvert" Text="Convert" runat="server" OnClick="btnConvert_Click" />--%>
     </form>
 </body>
 </html>
