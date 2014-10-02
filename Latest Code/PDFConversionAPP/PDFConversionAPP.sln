@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFConversionAPP", "PDFConversionAPP\PDFConversionAPP.csproj", "{33B1A32E-C993-4393-923E-ED8927A15F87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversion", "Conversion\Conversion.csproj", "{F24C1F45-69B9-4ECE-866B-B890A3361845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionTestProject", "ConversionTestProject\ConversionTestProject.csproj", "{D2AE9AEC-E24E-4017-91A9-0F675A3ACAA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33B1A32E-C993-4393-923E-ED8927A15F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B1A32E-C993-4393-923E-ED8927A15F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B1A32E-C993-4393-923E-ED8927A15F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B1A32E-C993-4393-923E-ED8927A15F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24C1F45-69B9-4ECE-866B-B890A3361845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24C1F45-69B9-4ECE-866B-B890A3361845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24C1F45-69B9-4ECE-866B-B890A3361845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24C1F45-69B9-4ECE-866B-B890A3361845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2AE9AEC-E24E-4017-91A9-0F675A3ACAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2AE9AEC-E24E-4017-91A9-0F675A3ACAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2AE9AEC-E24E-4017-91A9-0F675A3ACAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2AE9AEC-E24E-4017-91A9-0F675A3ACAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
