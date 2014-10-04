@@ -1,0 +1,9 @@
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\obj\Debug\ConversionTestProject.csprojResolveAssemblyReference.cache
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\bin\Debug\ConversionTestProject.dll
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\bin\Debug\ConversionTestProject.pdb
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\bin\Debug\Conversion.dll
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\bin\Debug\PdfSharp.dll
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\bin\Debug\itextsharp.dll
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\bin\Debug\Conversion.pdb
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\obj\Debug\ConversionTestProject.dll
+D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\ConversionTestProject\obj\Debug\ConversionTestProject.pdb
