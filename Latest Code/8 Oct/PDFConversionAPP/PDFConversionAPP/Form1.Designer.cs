@@ -30,6 +30,7 @@
         {
             this.rootPanel = new System.Windows.Forms.Panel();
             this.panelFill = new System.Windows.Forms.Panel();
+            this.btnOutPath = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFileNames = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.topPanel = new System.Windows.Forms.Panel();
             this.lblHeading = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.lblOutpath = new System.Windows.Forms.Label();
             this.rootPanel.SuspendLayout();
             this.panelFill.SuspendLayout();
             this.topPanel.SuspendLayout();
@@ -51,12 +53,14 @@
             this.rootPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rootPanel.Location = new System.Drawing.Point(0, 0);
             this.rootPanel.Name = "rootPanel";
-            this.rootPanel.Size = new System.Drawing.Size(498, 282);
+            this.rootPanel.Size = new System.Drawing.Size(552, 282);
             this.rootPanel.TabIndex = 0;
             // 
             // panelFill
             // 
             this.panelFill.BackColor = System.Drawing.Color.Linen;
+            this.panelFill.Controls.Add(this.lblOutpath);
+            this.panelFill.Controls.Add(this.btnOutPath);
             this.panelFill.Controls.Add(this.progressBar1);
             this.panelFill.Controls.Add(this.label1);
             this.panelFill.Controls.Add(this.lblFileNames);
@@ -66,9 +70,18 @@
             this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFill.Location = new System.Drawing.Point(0, 54);
             this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(498, 228);
+            this.panelFill.Size = new System.Drawing.Size(552, 228);
             this.panelFill.TabIndex = 1;
-            this.panelFill.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFill_Paint);
+            // 
+            // btnOutPath
+            // 
+            this.btnOutPath.Location = new System.Drawing.Point(213, 82);
+            this.btnOutPath.Name = "btnOutPath";
+            this.btnOutPath.Size = new System.Drawing.Size(75, 23);
+            this.btnOutPath.TabIndex = 7;
+            this.btnOutPath.Text = "Output Path";
+            this.btnOutPath.UseVisualStyleBackColor = true;
+            this.btnOutPath.Click += new System.EventHandler(this.btnOutPath_Click);
             // 
             // progressBar1
             // 
@@ -85,12 +98,12 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(401, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Note: Only JEPG,JPG,TEXT,GIF,DOC,DOCX,XLSX,XLS, File formats are accepted.";
+            this.label1.Text = "Note: Only JPEG,JPG,TEXT,GIF,DOC,DOCX,XLSX,XLS, File formats are accepted.";
             // 
             // lblFileNames
             // 
             this.lblFileNames.AutoSize = true;
-            this.lblFileNames.Location = new System.Drawing.Point(210, 86);
+            this.lblFileNames.Location = new System.Drawing.Point(306, 48);
             this.lblFileNames.Name = "lblFileNames";
             this.lblFileNames.Size = new System.Drawing.Size(54, 13);
             this.lblFileNames.TabIndex = 4;
@@ -133,7 +146,7 @@
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(498, 54);
+            this.topPanel.Size = new System.Drawing.Size(552, 54);
             this.topPanel.TabIndex = 0;
             // 
             // lblHeading
@@ -152,12 +165,20 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Multiselect = true;
             // 
+            // lblOutpath
+            // 
+            this.lblOutpath.AutoSize = true;
+            this.lblOutpath.Location = new System.Drawing.Point(306, 92);
+            this.lblOutpath.Name = "lblOutpath";
+            this.lblOutpath.Size = new System.Drawing.Size(0, 13);
+            this.lblOutpath.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(498, 282);
+            this.ClientSize = new System.Drawing.Size(552, 282);
             this.Controls.Add(this.rootPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -187,6 +208,8 @@
         private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button btnOutPath;
+        private System.Windows.Forms.Label lblOutpath;
     }
 }
 

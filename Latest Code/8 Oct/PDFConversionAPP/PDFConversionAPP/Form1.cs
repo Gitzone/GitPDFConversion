@@ -55,23 +55,30 @@ namespace PDFConversionAPP
             EndpointAddress address = new EndpointAddress(url);
 
             Service1SoapClient sc = new Service1SoapClient(binding, address);
-           
-            
+
+
 
 
             PdfDocument doc = new PdfDocument();
             int count = 0;
             string[] FilenameName;
+            string exportPath="";
             /***Final Output file folder***/
-            string appPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            string exportPath = appPath + "\\Uploads";
-            bool exists = System.IO.Directory.Exists(exportPath);
-            if (!exists)
-                System.IO.Directory.CreateDirectory(exportPath);
-
+            if (lblOutpath.Text == "")
+            {
+                string appPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                exportPath = appPath + "\\Uploads";
+                bool exists = System.IO.Directory.Exists(exportPath);
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(exportPath);
+            }
+            else
+            {
+                exportPath = lblOutpath.Text;
+            }
             /****End***/
 
-           
+
             progressBar1.PerformStep();
 
             foreach (string item in openFileDialog1.FileNames)
@@ -83,12 +90,12 @@ namespace PDFConversionAPP
                 string[] filename = fullfilename.Split('.');
                 if (extension == ".jpg" || extension == ".jpeg" || extension == ".gif")
                 {
-                   
+
                     ConvertFileToStream("IMAGE", item);
                 }
                 else if (extension == ".xls" || extension == ".xlsx")
                 {
-                    ConvertFileToStream("EXCEL",item);
+                    ConvertFileToStream("EXCEL", item);
                 }
                 else if (extension == ".txt")
                 {
@@ -103,11 +110,11 @@ namespace PDFConversionAPP
             }
             progressBar1.PerformStep();
             Conversion.PDFConversion con = new PDFConversion();
-           
 
-           var documentContents=  sc.MergDocuments();
-           saveFinalDocuments(documentContents, exportPath);
-        
+
+            var documentContents = sc.MergDocuments();
+            saveFinalDocuments(documentContents, exportPath);
+
             progressBar1.Value = 100;
             progressBar1.Enabled = false;
             progressBar1.PerformStep();
@@ -126,22 +133,31 @@ namespace PDFConversionAPP
             objfilestream.Close();
         }
 
-        private void saveFinalDocuments(byte[] documentContents,string exportPath)
+        private void saveFinalDocuments(byte[] documentContents, string exportPath)
         {
             string datetimeString = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}.txt", DateTime.Now);
-            string sFile = exportPath + "\\" + datetimeString+".pdf";
+            string sFile = exportPath + "\\" + datetimeString + ".pdf";
             MemoryStream objstreaminput = new MemoryStream();
             FileStream objfilestream = new FileStream(sFile.Insert(sFile.LastIndexOf("."), "2"), FileMode.Create, FileAccess.ReadWrite);
 
-           
-            int len = documentContents.Length;   
+
+            int len = documentContents.Length;
             Byte[] mybytearray = new Byte[len];
             objfilestream.Write(documentContents, 0, len);
             objfilestream.Close();
         }
 
-        private void panelFill_Paint(object sender, PaintEventArgs e)
+
+        private void btnOutPath_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog OpenFilePath = new FolderBrowserDialog();
+            DialogResult result = OpenFilePath.ShowDialog();
+
+            if (result == DialogResult.OK) // Test result.
+            {
+                lblOutpath.Text = OpenFilePath.SelectedPath;
+
+            }
 
         }
 

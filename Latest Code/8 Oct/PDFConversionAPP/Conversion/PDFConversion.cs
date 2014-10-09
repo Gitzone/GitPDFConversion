@@ -149,7 +149,9 @@ namespace Conversion
         }
         static void ExcelToPDF(string sourcePath, string ExportPath)
         {
+            
             Microsoft.Office.Interop.Excel.Application excelApplication = new Microsoft.Office.Interop.Excel.Application();
+          
             Workbook excelWorkBook = null;
 
             string paramSourceBookPath = sourcePath;
@@ -227,6 +229,12 @@ namespace Conversion
                 {
                     excelApplication.Quit();
                     excelApplication = null;
+                   
+                }
+                Process excelProcess = Process.GetProcessesByName("EXCEL")[0];
+                if (!excelProcess.CloseMainWindow())
+                {
+                    excelProcess.Kill();
                 }
 
                 GC.Collect();
