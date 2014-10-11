@@ -390,26 +390,35 @@ namespace ConversionService
         [WebMethod]
         public bool SaveDocument(Byte[] docbinaryarray, string docname, string docType)
         {
+            try
+            {
+                /***Create Temp folder just processing purpose*/
+                string strdocPath = "C:\\Temp\\"; // your code goes here
+                bool checkfolder = System.IO.Directory.Exists(strdocPath);
+                if (!checkfolder)
+                    System.IO.Directory.CreateDirectory(strdocPath);
+                /*****End****/
 
-            /***Create Temp folder just processing purpose*/
-            string strdocPath = "C:\\Temp\\"; // your code goes here
-            bool checkfolder = System.IO.Directory.Exists(strdocPath);
-            if (!checkfolder)
-                System.IO.Directory.CreateDirectory(strdocPath);
-            /*****End****/
-
-            strdocPath = strdocPath + docname;
-            FileStream objfilestream = new FileStream(strdocPath, FileMode.Create, FileAccess.ReadWrite);
-            objfilestream.Write(docbinaryarray, 0, docbinaryarray.Length);
-            objfilestream.Close();
+                strdocPath = strdocPath + docname;
+                FileStream objfilestream = new FileStream(strdocPath, FileMode.Create, FileAccess.ReadWrite);
+                objfilestream.Write(docbinaryarray, 0, docbinaryarray.Length);
+                objfilestream.Close();
 
 
-            string[] file = strdocPath.Split('.');
-            string PdfFile = file[0];
-            PDFConversion.ConvertTOPdf(docType, strdocPath, PdfFile);
-            File.Delete(strdocPath);
-            return true;
+                string[] file = strdocPath.Split('.');
+                string PdfFile = file[0];
+                PDFConversion.ConvertTOPdf(docType, strdocPath, PdfFile);
+                File.Delete(strdocPath);
+                return true;
 
+            }
+            catch (Exception)
+            {
+                return true;
+                //throw;
+            }
+
+            
         }
 
         [WebMethod]

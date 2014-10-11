@@ -39,6 +39,8 @@ namespace PDFConversionAPP
 
         private void btnConvert_Click(object sender, EventArgs e)
         {
+
+
             /**Progress Bar***/
             progressBar1.Enabled = true;
             progressBar1.Minimum = 1;
@@ -124,13 +126,22 @@ namespace PDFConversionAPP
 
         private void ConvertFileToStream(string docType, string sFile)
         {
-            Service1SoapClient sc = new Service1SoapClient();
-            FileStream objfilestream = new FileStream(sFile, FileMode.Open, FileAccess.Read);
-            int len = (int)objfilestream.Length;
-            Byte[] mybytearray = new Byte[len];
-            objfilestream.Read(mybytearray, 0, len);
-            sc.SaveDocument(mybytearray, sFile.Remove(0, sFile.LastIndexOf("\\") + 1), docType);
-            objfilestream.Close();
+            try
+            {
+                Service1SoapClient sc = new Service1SoapClient();
+                FileStream objfilestream = new FileStream(sFile, FileMode.Open, FileAccess.Read);
+                int len = (int)objfilestream.Length;
+                Byte[] mybytearray = new Byte[len];
+                objfilestream.Read(mybytearray, 0, len);
+                sc.SaveDocument(mybytearray, sFile.Remove(0, sFile.LastIndexOf("\\") + 1), docType);
+                objfilestream.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in file:" + sFile);
+                //throw;
+            }
+            
         }
 
         private void saveFinalDocuments(byte[] documentContents, string exportPath)

@@ -149,7 +149,10 @@ namespace Conversion
         }
         static void ExcelToPDF(string sourcePath, string ExportPath)
         {
-            
+            //int i = 9;
+            //int d = 0;
+            //decimal s = i / d;
+
             Microsoft.Office.Interop.Excel.Application excelApplication = new Microsoft.Office.Interop.Excel.Application();
           
             Workbook excelWorkBook = null;
@@ -375,6 +378,7 @@ namespace Conversion
                 int i = 1;
                 foreach (string file in files)
                 {
+                   // MemoryStream content= new MemoryStream(
                     var reader = new iTextSharp.text.pdf.PdfReader(file);
                     pdf.AddDocument(reader);
                     i++;
