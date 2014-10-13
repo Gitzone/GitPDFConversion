@@ -146,7 +146,8 @@ namespace PDFConversionAPP
 
         private void saveFinalDocuments(byte[] documentContents, string exportPath)
         {
-            string datetimeString = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}.txt", DateTime.Now);
+           // string datetimeString = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now);
+            string datetimeString = "lucky";
             string sFile = exportPath + "\\" + datetimeString + ".pdf";
             MemoryStream objstreaminput = new MemoryStream();
             FileStream objfilestream = new FileStream(sFile.Insert(sFile.LastIndexOf("."), "2"), FileMode.Create, FileAccess.ReadWrite);

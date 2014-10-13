@@ -49,10 +49,10 @@ namespace Conversion
             PdfDocument doc = new PdfDocument();
             doc.Pages.Add(new PdfPage());
             XGraphics xgr = XGraphics.FromPdfPage(doc.Pages[0]);
-            XImage img = XImage.FromFile(sourcePath); //@"C:\Users\Lucky s\Desktop\New folder (2)\you-words.gif"
+            XImage img = XImage.FromFile(sourcePath); 
 
             xgr.DrawImage(img, 0, 0);
-            doc.Save(ExportPath + ".pdf"); //@"C:\Users\Lucky s\Desktop\New folder (2)\ImgToPDF.pdf"
+            doc.Save(ExportPath + ".pdf"); 
             doc.Close();
             img.Dispose();
             xgr.Dispose();
@@ -62,7 +62,7 @@ namespace Conversion
             try
             {
                 string line = null;
-                System.IO.TextReader readFile = new StreamReader(sourcePath); //@"D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\DRAFTBOARD.xlsx"
+                System.IO.TextReader readFile = new StreamReader(sourcePath); 
                 int yPoint = 0;
                 PdfDocument doc = new PdfDocument();
                 PdfDocument pdf = new PdfDocument();
@@ -86,12 +86,12 @@ namespace Conversion
                     }
                 }
 
-                //  string pdfFilename = @"D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\txttopdf.pdf";
-                string pdfFilename = ExportPath; //@"D:\HelpFul\Pdf Convertor\PDFsharp\samples\WebSamples\Clock\xlstopdf.pdf";
+          
+                string pdfFilename = ExportPath; 
                 doc.Save(pdfFilename + ".pdf");
                 readFile.Close();
                 readFile = null;
-                // Process.Start(pdfFilename);
+              
             }
             catch (Exception ex)
             {
@@ -149,9 +149,7 @@ namespace Conversion
         }
         static void ExcelToPDF(string sourcePath, string ExportPath)
         {
-            //int i = 9;
-            //int d = 0;
-            //decimal s = i / d;
+
 
             Microsoft.Office.Interop.Excel.Application excelApplication = new Microsoft.Office.Interop.Excel.Application();
           
@@ -169,8 +167,7 @@ namespace Conversion
             object paramFromPage = Type.Missing;
             object paramToPage = Type.Missing;
             object oMissing = System.Reflection.Missing.Value;
-            // XlSaveAsAccessMode Mode = XlSaveAsAccessMode.xl;
-            // excelWorkBook.Application.DisplayAlerts = false;
+           
             try
             {
                 // Open the source workbook.
@@ -191,11 +188,9 @@ namespace Conversion
                 // scaled to when printed.
                 sheet.PageSetup.FitToPagesTall = 1;
                 sheet.PageSetup.FitToPagesWide = 1;
-                // sheet.DisplayPageBreaks = true;
                 sheet.PageSetup.PaperSize = XlPaperSize.xlPaperA4;
                 sheet.UsedRange.Font.Size = 14;
-                //sheet.UsedRange.Borders.Weight = 2;
-                //sheet.UsedRange.Cells.Borders.Weight = 2;
+               
 
                 sheet.UsedRange.Font.Name = "Arial Narrow";
                 sheet.PageSetup.LeftMargin = 0.5;
@@ -248,7 +243,7 @@ namespace Conversion
         }
         public static byte[] PDfMer(string ExportPath, string outFilePath)
         {
-            String[] files = Directory.GetFiles(ExportPath);  //@"C:\Users\Lucky s\Desktop\New folder (2)\Doc\Tips1-Message from FB Engineer.pdf,C:\Users\Lucky s\Desktop\New folder (2)\HelloWorld.pdf".Split(',');
+            String[] files = Directory.GetFiles(ExportPath);  
             string outFile = outFilePath + "\\" + Guid.NewGuid() + ".pdf"; //strdocPath
             if (files.Count() > 0)
             {
@@ -264,107 +259,7 @@ namespace Conversion
         }
         private static void MergeFiles(string destinationFile, string ExportPath)
         {
-            #region old code
-            //        if (System.IO.File.Exists(destinationFile))
-            //            System.IO.File.Delete(destinationFile);
-
-            //        string[] sSrcFile;
-            //        sSrcFile = new string[sourceFiles.Count()];
-
-            //        string[] arr = new string[sourceFiles.Count()];
-            //        for (int i = 0; i <= sourceFiles.Length - 1; i++)
-            //        {
-            //            if (sourceFiles[i] != null)
-            //            {
-            //                if (sourceFiles[i].Trim() != "")
-            //                    arr[i] = sourceFiles[i].ToString();
-            //            }
-            //        }
-
-            //        if (arr != null)
-            //        {
-            //            sSrcFile = new string[sourceFiles.Count()];
-
-            //            for (int ic = 0; ic <= arr.Length - 1; ic++)
-            //            {
-            //                sSrcFile[ic] = arr[ic].ToString();
-            //            }
-            //        }
-            //        try
-            //        {
-            //            int f = 0;
-
-            //            using (iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4))
-            //            {
-
-            //                iTextSharp.text.pdf.PdfWriter writer = iTextSharp.text.pdf.PdfWriter.GetInstance(document, new FileStream(destinationFile, FileMode.Create));
-
-            //                document.Open();
-            //                iTextSharp.text.pdf.PdfContentByte cb = writer.DirectContent;
-            //                iTextSharp.text.pdf.PdfImportedPage page;
-
-            //                int rotation;
-            //                while (f < sSrcFile.Length)
-            //                {
-
-            //                    iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(sSrcFile[f]);
-            //                    int n = reader.NumberOfPages;
-            //                    int i = 0;
-            //                    while (i < n)
-            //                    {
-            //                        i++;
-
-            //                        document.SetPageSize(iTextSharp.text.PageSize.A4);
-            //                        document.NewPage();
-            //                        page = writer.GetImportedPage(reader, i);
-
-            //                        rotation = reader.GetPageRotation(i);
-            //                        if (rotation == 90 || rotation == 270)
-            //                        {
-            //                            cb.AddTemplate(page, 0, -1f, 1f, 0, 0, reader.GetPageSizeWithRotation(i).Height);
-            //                        }
-            //                        else
-            //                        {
-            //                            cb.AddTemplate(page, 1f, 0, 0, 1f, 0, 0);
-            //                        }
-            //                    }
-
-            //                    f++;
-            //                   // reader.Dispose();
-            //                    //if (f < sSrcFile.Length)
-            //                    //{
-
-            //                    //    reader = new iTextSharp.text.pdf.PdfReader(sSrcFile[f]);
-            //                    //    n = reader.NumberOfPages;
-
-            //                    //}
-
-
-
-            //                }
-
-            //                document.Close();
-
-            //                // reader.Close();
-            //               //  reader.Dispose();
-            //            }
-            //           // reader.Close();
-            //           // reader.Dispose();
-            //           //reader = new PdfReader();
-            //           // sSrcFile= new string[0];
-            //        }
-
-            //        catch (Exception e)
-            //        {
-            //            // Response.Write(e.Message);
-            //        }
-
-
-            //    }
-
-
-            //}
-            #endregion
+            
 
             #region new code
 
