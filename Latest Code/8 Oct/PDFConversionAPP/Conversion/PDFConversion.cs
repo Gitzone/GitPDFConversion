@@ -59,8 +59,8 @@ namespace Conversion
         }
         static void TextToPdf(string sourcePath, string ExportPath)
         {
-            try
-            {
+            //try
+            //{
                 string line = null;
                 System.IO.TextReader readFile = new StreamReader(sourcePath); 
                 int yPoint = 0;
@@ -92,11 +92,11 @@ namespace Conversion
                 readFile.Close();
                 readFile = null;
               
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.ToString());
-            }
+           // }
+            //catch (Exception ex)
+            //{
+            //    //MessageBox.Show(ex.ToString());
+            //}
 
         }
         static void DocToPdf(string sourcePath, string ExportPath)
@@ -212,6 +212,7 @@ namespace Conversion
             catch (Exception ex)
             {
                 // Respond to the error.
+                throw ex;
             }
             finally
             {
@@ -243,19 +244,28 @@ namespace Conversion
         }
         public static byte[] PDfMer(string ExportPath, string outFilePath)
         {
-            String[] files = Directory.GetFiles(ExportPath);  
-            string outFile = outFilePath + "\\" + Guid.NewGuid() + ".pdf"; //strdocPath
-            if (files.Count() > 0)
+            try
             {
-                MergeFiles(outFile, ExportPath);
-                var documentContents = GetOutputDocument(outFile);
-                return documentContents;
+                String[] files = Directory.GetFiles(ExportPath);
+                string outFile = outFilePath + "\\" + Guid.NewGuid() + ".pdf"; //strdocPath
+                if (files.Count() > 0)
+                {
+                    MergeFiles(outFile, ExportPath);
+                    var documentContents = GetOutputDocument(outFile);
+                    return documentContents;
+                }
+                else
+                {
+                    Byte[] empty = new Byte[0];
+                    return empty;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Byte[] empty=new Byte[0];
-                return empty;
+                
+                throw ex;
             }
+           
         }
         private static void MergeFiles(string destinationFile, string ExportPath)
         {

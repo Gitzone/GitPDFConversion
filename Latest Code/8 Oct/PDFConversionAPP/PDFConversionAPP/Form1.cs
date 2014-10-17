@@ -59,68 +59,79 @@ namespace PDFConversionAPP
             Service1SoapClient sc = new Service1SoapClient(binding, address);
 
 
-
-
-            PdfDocument doc = new PdfDocument();
-            int count = 0;
-            string[] FilenameName;
-            string exportPath="";
-            /***Final Output file folder***/
-            if (lblOutpath.Text == "")
-            {
-                string appPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                exportPath = appPath + "\\Uploads";
-                bool exists = System.IO.Directory.Exists(exportPath);
-                if (!exists)
-                    System.IO.Directory.CreateDirectory(exportPath);
-            }
-            else
-            {
-                exportPath = lblOutpath.Text;
-            }
-            /****End***/
-
-
-            progressBar1.PerformStep();
-
-            foreach (string item in openFileDialog1.FileNames)
+            try
             {
 
-                FilenameName = item.Split('\\');
-                string extension = Path.GetExtension(FilenameName[FilenameName.Length - 1]).ToLower();
-                string fullfilename = Path.GetFileName(FilenameName[FilenameName.Length - 1]);
-                string[] filename = fullfilename.Split('.');
-                if (extension == ".jpg" || extension == ".jpeg" || extension == ".gif")
+                PdfDocument doc = new PdfDocument();
+                int count = 0;
+                string[] FilenameName;
+                string exportPath = "";
+                /***Final Output file folder***/
+                if (lblOutpath.Text == "")
                 {
+                    string appPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                    exportPath = appPath + "\\Uploads";
+                    bool exists = System.IO.Directory.Exists(exportPath);
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(exportPath);
+                }
+                else
+                {
+                    exportPath = lblOutpath.Text;
+                }
+                /****End***/
 
-                    ConvertFileToStream("IMAGE", item);
-                }
-                else if (extension == ".xls" || extension == ".xlsx")
-                {
-                    ConvertFileToStream("EXCEL", item);
-                }
-                else if (extension == ".txt")
-                {
-                    ConvertFileToStream("TEXT", item);
-                }
-                else if (extension == ".doc" || extension == ".docx")
-                {
-                    ConvertFileToStream("DOC", item);
-                }
-                count++;
+
                 progressBar1.PerformStep();
+
+                foreach (string item in openFileDialog1.FileNames)
+                {
+
+                    FilenameName = item.Split('\\');
+                    string extension = Path.GetExtension(FilenameName[FilenameName.Length - 1]).ToLower();
+                    string fullfilename = Path.GetFileName(FilenameName[FilenameName.Length - 1]);
+                    string[] filename = fullfilename.Split('.');
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".gif")
+                    {
+
+                        ConvertFileToStream("IMAGE", item);
+                    }
+                    else if (extension == ".xls" || extension == ".xlsx")
+                    {
+                        ConvertFileToStream("EXCEL", item);
+                    }
+                    else if (extension == ".txt")
+                    {
+                        ConvertFileToStream("TEXT", item);
+                    }
+                    else if (extension == ".doc" || extension == ".docx")
+                    {
+                        ConvertFileToStream("DOC", item);
+                    }
+                    else if (extension == ".pdf")
+                    {
+                        ConvertFileToStream("pdf", item);
+                    }
+                    count++;
+                    progressBar1.PerformStep();
+                }
+                progressBar1.PerformStep();
+                Conversion.PDFConversion con = new PDFConversion();
+
+
+                var documentContents = sc.MergDocuments();
+                saveFinalDocuments(documentContents, exportPath);
+
+                progressBar1.Value = 100;
+                progressBar1.Enabled = false;
+                progressBar1.PerformStep();
+                MessageBox.Show("File Created on location:" + exportPath);
             }
-            progressBar1.PerformStep();
-            Conversion.PDFConversion con = new PDFConversion();
-
-
-            var documentContents = sc.MergDocuments();
-            saveFinalDocuments(documentContents, exportPath);
-
-            progressBar1.Value = 100;
-            progressBar1.Enabled = false;
-            progressBar1.PerformStep();
-            MessageBox.Show("File Created on location:" + exportPath);
+            catch (Exception)
+            {
+                MessageBox.Show("Error exists during file conversions");
+                // throw;
+            }
 
         }
 
@@ -141,22 +152,32 @@ namespace PDFConversionAPP
                 MessageBox.Show("Error in file:" + sFile);
                 //throw;
             }
-            
+
         }
 
         private void saveFinalDocuments(byte[] documentContents, string exportPath)
         {
-           // string datetimeString = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now);
-            string datetimeString = "lucky";
-            string sFile = exportPath + "\\" + datetimeString + ".pdf";
-            MemoryStream objstreaminput = new MemoryStream();
-            FileStream objfilestream = new FileStream(sFile.Insert(sFile.LastIndexOf("."), "2"), FileMode.Create, FileAccess.ReadWrite);
+            string sFile = "";
+            try
+            {
+                 string datetimeString = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now);
+                sFile = exportPath + "\\" + datetimeString + ".pdf";
+                MemoryStream objstreaminput = new MemoryStream();
+                FileStream objfilestream = new FileStream(sFile.Insert(sFile.LastIndexOf("."), "_CON"), FileMode.Create, FileAccess.ReadWrite);
 
 
-            int len = documentContents.Length;
-            Byte[] mybytearray = new Byte[len];
-            objfilestream.Write(documentContents, 0, len);
-            objfilestream.Close();
+                int len = documentContents.Length;
+                Byte[] mybytearray = new Byte[len];
+                objfilestream.Write(documentContents, 0, len);
+                objfilestream.Close();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in file:" + sFile);
+                throw;
+            }
+
         }
 
 

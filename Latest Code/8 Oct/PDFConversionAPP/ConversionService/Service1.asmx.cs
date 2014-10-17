@@ -63,8 +63,8 @@ namespace ConversionService
         [WebMethod]
         public bool SaveDocument(Byte[] docbinaryarray, string docname, string docType)
         {
-            try
-            {
+            //try
+            //{
                 /***Create Temp folder just processing purpose*/
                 string strdocPath = Server.MapPath("Temp"); // your code goes here
                 bool checkfolder = System.IO.Directory.Exists(strdocPath);
@@ -80,16 +80,20 @@ namespace ConversionService
 
                 string[] file = strdocPath.Split('.');
                 string PdfFile = file[0];
-                PDFConversion.ConvertTOPdf(docType, strdocPath, PdfFile);
-                File.Delete(strdocPath);
+                if (docType != "pdf")
+                {
+                    PDFConversion.ConvertTOPdf(docType, strdocPath, PdfFile);
+                    File.Delete(strdocPath);
+                }
+               
                 return true;
 
-            }
-            catch (Exception)
-            {
-                return true;
-                //throw;
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    return true;
+            //    //throw;
+            //}
 
             
         }

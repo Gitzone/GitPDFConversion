@@ -9,4 +9,3 @@ D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\Conversion\bin\Debug\
 D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\Conversion\bin\Debug\PdfSharp.dll
 D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\Conversion\obj\Debug\Conversion.dll
 D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\Conversion\obj\Debug\Conversion.pdb
-D:\All Projects\Risky Pathak\PDFConverion\PDFConversionAPP\Conversion\obj\Debug\Conversion.csprojResolveAssemblyReference.cache
